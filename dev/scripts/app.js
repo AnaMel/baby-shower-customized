@@ -175,7 +175,7 @@ class App extends React.Component {
             
             
           {/* Always render: footer */}
-          <Footer />
+          {/* <Footer /> */}
           </React.Fragment>
         </Router>
       )

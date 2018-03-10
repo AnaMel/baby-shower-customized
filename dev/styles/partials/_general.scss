@@ -63,9 +63,6 @@ button:hover {
 //---------------------
 // All Section
 //---------------------
-main {
-    min-height: 100vh;
-}
 .wrapper {
     width: 80%;
     max-width: 1150px;
@@ -89,54 +86,38 @@ main {
 
 }
 
-//---------------------
-// Button
-//---------------------
-
-// .btn {
-//    display: inline-block;
-//    border: 1px solid black;
-//    padding: 10px 20px;
-// }
-
 .afterAdd {
     background: $color-ac;
     color: black;
     margin-bottom: 40px;
 }
 
-// .btn ~ .btn {
-//     margin-top: 20px;
-// }
-
-
 //---------------------
 // Header
 //---------------------
 header {
-    min-height: 80px;
     background: $color-ac;
-    color: black;
-    // width: 100vw;
-    padding: 0 40px;
-    ~ section, ~ main {
-        clear: both;
-    }
-    a:visited {
-        color: black;
-    }
-
-    .logo {
-        height: 63px;
-        margin-top: 7px;
-        fill: white;
-        @media(max-width: 480px) {
-            display: none;
+    // color: black;
+    .headerContent {
+        padding: 20px;
+        .logo {
+            float: left;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: white;
+        }
+        ~ section, ~ main {
+            clear: both;
+        }
+        a:visited {
+            color: black;
         }
     }
 
-    .header__right {
-        margin-top: 20px;
+    .headerControls {
+        float: right;
         @media(max-width: 480px) {
             margin-top: 15px;
         }
@@ -148,22 +129,22 @@ header {
                 margin: 0 0 15px 0;
             }
         }
-    }
-
-    button.btn {
-        margin-top: 0px;
-    }
-    button.btn:first-of-type {
-        @media(max-width:480px) {
-            margin-top:15px;
+        button.btn {
+            margin-top: 0px;
         }
-    }
-    button.btn:hover {
-        border:1.5px solid #2d3956;
-    }
-
-    .signOutButton {
-        margin-left: 10px;
+        button.btn:first-of-type {
+            background-color: #ED6A5A;
+            @media(max-width:480px) {
+                margin-top:15px;
+            }
+        }
+        button.btn:hover {
+            border:1.5px solid #2d3956;
+        }
+    
+        .signOutButton {
+            margin-left: 10px;
+        }
     }
 }
 
@@ -179,29 +160,6 @@ span.text__header {
 
 a.text__header {
     font-style: italic;
-}
-//---------------------
-// Layouts (floats)
-//---------------------
-.layout__opposite {
-    > * {
-        display: inline;
-    }
-    div:first-child {
-        float: left;
-    }
-    div:last-child {
-        float: right;
-        @media(max-width: 480px) {
-            float: none;
-        }
-    }
-}
-
-.layout__beside {
-    > * {
-        display: inline;
-    }
 }
 
 .layout__XCenter {
@@ -226,6 +184,9 @@ a.text__header {
     margin: 0 auto;
 }
 
+.adjustedYPosition {
+    top:40%;
+}
 
 //---------------------
 // Footer

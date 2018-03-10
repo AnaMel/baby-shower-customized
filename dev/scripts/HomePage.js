@@ -9,34 +9,24 @@ import {
 const Homepage = (props) => {
     return (
         <main className="homepage">
-            {/* {  props.loggedIn === true ?
-                <Link to="/dashboard"><div className="linkToDash"> <h4> Go to My Dashboard </h4> </div></Link>
-            : null
-            } */}
             <section className="hero">
-                <h2 className="heading__hero layout__XYCenter">Make your baby shower extra special with Betsy!</h2>
+                <h2 className="heading__hero layout__XYCenter adjustedYPosition">Make your baby shower special with Betsy!</h2>
             </section>
-            <div className="wrapper">
-    
-                <section className="layout__opposite clearfix layout__half padding">
-                    
-                    
-                    <div className="home__graphic clearfix">
-                        <ol className="clearfix">
-                            <li>Search for Etsy gifts</li>
-                            <li>Save your choices</li>
-                            <li>Invite friends & family</li>
-                            <li>Keep track of your guests purchases</li>
-                        </ol>    
-                        <div className="toyCollection">              
-                            <img src="/assets/baby-boy.png" alt="Graphic of baby girl" className="graphics" />
-                            <img src="/assets/toy-train.png" alt="Graphic of baby girl" className="graphics" />
-                            <img src="/assets/cot.png" alt="Graphic of baby girl" className="graphics" />
-                            <img src="/assets/doll.png" alt="Graphic of baby girl" className="graphics" />
-                        </div>
+            <section className="homePageInstructions">
+                <div className="home__graphic clearfix wrapper">
+                    <ol className="clearfix">
+                        <li>Search for Etsy gifts</li>
+                        <li>Invite friends & family</li>
+                        <li>Keep track of your registry</li>
+                    </ol>    
+                    <div className="toyCollection">              
+                        <img src="/assets/baby-boy.png" alt="Graphic of baby girl" className="graphics" />
+                        <img src="/assets/toy-train.png" alt="Graphic of baby girl" className="graphics" />
+                        <img src="/assets/cot.png" alt="Graphic of baby girl" className="graphics" />
+                        <img src="/assets/doll.png" alt="Graphic of baby girl" className="graphics" />
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </main>
 
 
