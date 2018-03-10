@@ -91,7 +91,7 @@ class EventCard extends React.Component {
                         <a href="#" className={this.state.isEditing ? 'hide': 'editEvent'} onClick={(e) => this.allowEdit(e)}>
                             <i className="fas fa-pencil-alt"></i>
                         </a>
-                        <p className="eventDateLocation"><span className="em">Event:</span> {`${this.props.datetime} at the ${this.props.location}`}</p>
+                        <p className="eventDateLocation"><span className="em">Event:</span> {`${this.props.datetime}, ${this.props.location}`}</p>
                         <p value={this.state.value}><span className="em">Invite Link</span>: {`https://baby-registry-b41ed.firebaseapp.com/invite/${this.props.eventId}`}</p>
                         <CopyToClipboard text={this.state.value} onCopy={() => this.setState({copied: true})}>
                             {/* <button style={this.state.copied?{backgroundColor: 'green'}: null}>Copy Invite Link</button>
@@ -112,7 +112,7 @@ class EventCard extends React.Component {
                     <div className="eventDetails">
                         <h2>{this.props.eventName}</h2>
                         <p>{`Host: ${this.props.hostName}`}</p>
-                        <p className="eventDateLocation"><span className="em">Event:</span>{`at the ${this.props.location}`}</p>
+                        <p className="eventDateLocation"><span className="em">Event: </span>{`${this.props.datetime}, ${this.props.location}`}</p>
                     </div>
                     <Link className="eventAction" to={{pathname: `/dashboard/${this.props.eventId}`, eventId: this.props.eventId, userId: this.props.user.uid, isHost: false, hostId:this.props.hostId}}>
                         <button>See Registry</button>
