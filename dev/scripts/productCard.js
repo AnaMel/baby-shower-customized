@@ -40,7 +40,7 @@ class ProductCard extends React.Component {
                 <div className="productCardDesc">
                     <h3>{this.props.data.title}</h3>
                     <h4>{`${this.props.data.quantity} remaining`}</h4>
-                    <button onClick={() => this.props.add(this.props.data)}>Add to registry!</button>
+                    <button onClick={() => this.props.add(this.props.data)}>Select Item</button>
                 </div>
             </div>
         )
