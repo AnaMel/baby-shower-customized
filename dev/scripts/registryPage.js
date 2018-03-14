@@ -242,68 +242,14 @@ class RegistryPage extends React.Component {
                 {this.props.location.isHost ?
                     <div className=" wrapper">
                         <h2 className="heading__page">My Event Registry List</h2>
-                        <form onSubmit={this.handleSubmit} className="searchBar">
-                            <h3 className="heading__section">Add Etsy Product to Registry List</h3>
-                            <label htmlFor="search">Search Etsy: </label>
-                            <input type="search" id="search" value={this.state.search} onChange={this.handleChange} />
-                            <input type="submit" value="Submit" className="btn"/>
-                        </form>
-                        <div className="filter ">
+                        {/* <div className="filter ">
                             <h2 className="heading__section">Filters:</h2>
                             <button className="btn__filter"onClick={this.categoryDropdown}>Categories</button>
-                        </div>
-
-                        
-
-                        {this.state.categoryClick ?
-                            <form className="categories ">
-                                <div>
-                                    <input type="radio" name="categories" id="accessories" value="accessories" onChange={this.handleCategory} checked={this.state.categories === "accessories"}/>
-                                    <label htmlFor="accessories">Accessories</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" name="categories" id="bath_and_beauty" value="bath_and_beauty" onChange={this.handleCategory} checked={this.state.categories === "bath_and_beauty"}/>
-                                    <label htmlFor="bath_and_beauty">Bath and Beauty</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" name="categories" id="children" value="children" onChange={this.handleCategory} checked={this.state.categories === "children"}/>
-                                    <label htmlFor="children">Children</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" name="categories" id="clothing" value="clothing" onChange={this.handleCategory} checked={this.state.categories === "clothing"}/>
-                                    <label htmlFor="clothing">Clothing</label>
-                                </div>
-                                
-                                <div>
-                                    <input type="radio" name="categories" id="dolls_and_miniatures" value="dolls_and_miniatures" onChange={this.handleCategory} checked={this.state.categories === "dolls_and_miniatures"}/>
-                                    <label htmlFor="dolls_and_miniatures">Dolls and Miniatures</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" name="categories" id="everything_else" value="everything_else" onChange={this.handleCategory} checked={this.state.categories === "everything_else"}/>
-                                    <label htmlFor="everything_else">Miscellaneous</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" name="categories" id="patterns" value="patterns" onChange={this.handleCategory} checked={this.state.categories === "patterns"}/>
-                                    <label htmlFor="patterns">Patterns</label>
-                                </div>
-
-                                <div>
-                                    <input type="radio" name="categories" id="toys" value="toys" onChange={this.handleCategory} checked={this.state.categories === "toys"}/>
-                                    <label htmlFor="toys">Toys</label>
-                                </div>
-                            </form>
-                            :
-                            null
-                        }
+                        </div> */}
 
                         
                         <section className="selectedItems clearfix">
-                            <h2 className="heading__section">Registry List</h2>
+                            <h2 className="heading__section">Selected Items</h2>
                             <section>
                                 <button onClick={this.saveRegistry}>Save to Registry</button>
                             </section>
@@ -315,10 +261,72 @@ class RegistryPage extends React.Component {
                                 )
                             })}
                         </section>
+                        <form onSubmit={this.handleSubmit} className="searchBar">
+                            {/* <label htmlFor="search">Search Etsy: </label> */}
+                            <input type="search" id="search" placeholder="Search Etsy" value={this.state.search} onChange={this.handleChange} />
+                            <button>Search</button>
+                        </form>
+
+                        {this.state.categoryClick ?
+                            <form className="categories clearfix">
+                                <div>
+                                    <input type="radio" name="categories" id="accessories" value="accessories" onChange={this.handleCategory} checked={this.state.categories === "accessories"}/>
+                                    <label htmlFor="accessories">Accessories</label>
+                                </div>
+
+                                {/* <div>
+                                    <input type="radio" name="categories" id="bath_and_beauty" value="bath_and_beauty" onChange={this.handleCategory} checked={this.state.categories === "bath_and_beauty"}/>
+                                    <label htmlFor="bath_and_beauty">Bath and Beauty</label>
+                                </div> */}
+
+                                <div>
+                                    <input type="radio" name="categories" id="children" value="children" onChange={this.handleCategory} checked={this.state.categories === "children"}/>
+                                    <label htmlFor="children">Children</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="categories" id="clothing" value="clothing" onChange={this.handleCategory} checked={this.state.categories === "clothing"}/>
+                                    <label htmlFor="clothing">Clothing</label>
+                                </div>
+                                
+                                {/* <div>
+                                    <input type="radio" name="categories" id="dolls_and_miniatures" value="dolls_and_miniatures" onChange={this.handleCategory} checked={this.state.categories === "dolls_and_miniatures"}/>
+                                    <label htmlFor="dolls_and_miniatures">Dolls and Miniatures</label>
+                                </div> */}
+
+                                {/* <div>
+                                    <input type="radio" name="categories" id="everything_else" value="everything_else" onChange={this.handleCategory} checked={this.state.categories === "everything_else"}/>
+                                    <label htmlFor="everything_else">Miscellaneous</label>
+                                </div> */}
+
+                                {/* <div>
+                                    <input type="radio" name="categories" id="patterns" value="patterns" onChange={this.handleCategory} checked={this.state.categories === "patterns"}/>
+                                    <label htmlFor="patterns">Patterns</label>
+                                </div> */}
+
+                                <div>
+                                    <input type="radio" name="categories" id="toys" value="toys" onChange={this.handleCategory} checked={this.state.categories === "toys"}/>
+                                    <label htmlFor="toys">Toys</label>
+                                </div>
+                            </form>
+                            :
+                            null
+                        }
+
+                        
                         <div className="searchGrid clearfix">
-                            <h2 className="heading__section">Search Results</h2>
+                            {/* <h2 className="heading__section">Search Results</h2> */}
 
                             {/* Pagination */}
+
+                            {this.state.searchResults.map((value) => {
+                                return (
+                                <React.Fragment>
+                                    <ProductCard data={value} key={`search-${value.listing_id}`} add={this.addtoRegistry}/>
+                                </React.Fragment>
+                            )
+                            })}
+                        </div>
                             <section className="resultsButtons">
                                 {this.state.pageNumber >= 2
                                     ?
@@ -329,15 +337,6 @@ class RegistryPage extends React.Component {
                                     :
                                     <button onClick={this.moreResults} className="nextButton">More Results</button>}
                             </section>
-
-                            {this.state.searchResults.map((value) => {
-                                return (
-                                <React.Fragment>
-                                    <ProductCard data={value} key={`search-${value.listing_id}`} add={this.addtoRegistry}/>
-                                </React.Fragment>
-                            )
-                            })}
-                        </div>
                     </div>
                 
                 :

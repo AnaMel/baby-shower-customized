@@ -35,15 +35,12 @@ form {
     padding-bottom: 130px;
     input {
         display: block;
+        padding: 15px;
     }
 }
 
 .btn__form {
     margin-top: 30px;
-}
-
-.btn__form:hover {
-    border:1.5px solid #2d3956;
 }
 
 fieldset {
@@ -65,7 +62,25 @@ fieldset {
 
 .link__black {
     color: black;
+    position: absolute;
+    top: 20px;
+    right: 20px;
     :visited {
         color: black;
     }
+}
+
+.label__form {
+    display: none;
+}
+
+main {
+    position: relative;
+    
+}
+
+body {
+    background-image: url(../../assets/yellow.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }

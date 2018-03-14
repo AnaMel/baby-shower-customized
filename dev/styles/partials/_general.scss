@@ -2,11 +2,12 @@
     display: inline-block;
     width: 51px;
     height: 51px;
-    background-color: salmon;
+    background-color:#ED6A5A;
     position: relative;
+    transition: all 0.2s;
     &:hover,
     &:focus {
-        background-color: orchid;
+        background-color: #A7D6EA;
     }
     >* {
         position: absolute;
@@ -45,19 +46,16 @@ ul {
 button {
     padding: 10px 15px;
     min-width: 150px;
-    background-color: $color-ac2;
+    background-color:#A7D6EA;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
     color: whitesmoke;
     border: 1.5px solid transparent;
     border-radius: 2px;
+    transition: all 0.2s;
 }
 
 button:hover {
-    border:1.5px solid #2d3956
-}
-
-.SelectedItems {
-    background-color: salmon;
+    background-color:rgba(167,214,234,0.7);     
 }
 
 //---------------------
@@ -68,7 +66,7 @@ button:hover {
     max-width: 1150px;
     margin: 0 auto;
     @media (max-width: $break-large) {
-        width: 95%;
+        width: 85%;
     } 
 }
 
@@ -96,7 +94,22 @@ button:hover {
 // Header
 //---------------------
 header {
-    background: $color-ac;
+    // height: 10vh;
+    // background-image: url(../../assets/yellow.jpg);
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.5);
+    @media (max-width: 1050px) {
+        background-color: transparent;
+    }
+    @media (max-width: 480px) {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    // position: fixed;
+    // top: 0;
+    // @media(max-width: 580px) {
+    //     display: none;
+    // }
     // color: black;
     .headerContent {
         padding: 20px;
@@ -104,9 +117,13 @@ header {
             float: left;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            font-size: 2.2rem;
+            font-size: 4.5rem;
             font-weight: bold;
-            color: white;
+            color: #888;
+            font-family: 'Cookie', cursive;
+            @media(max-width: 580px) {
+                display: none;
+            }
         }
         ~ section, ~ main {
             clear: both;
@@ -118,12 +135,18 @@ header {
 
     .headerControls {
         float: right;
-        @media(max-width: 480px) {
-            margin-top: 15px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        // width: 20%;
+        @media(max-width: 580px) {
+            flex-direction: column;
+            margin-top: 0;
+            width: 100%;
         }
         button {
-            margin-right: 10px;
-            @media(max-width: 480px) {
+            margin-left: 15px;
+            @media(max-width: 580px) {
                 width: 100%;
                 margin-left: 0;
                 margin: 0 0 15px 0;
@@ -133,24 +156,23 @@ header {
             margin-top: 0px;
         }
         button.btn:first-of-type {
-            background-color: #ED6A5A;
+            // background-color: #ED6A5A;
             @media(max-width:480px) {
                 margin-top:15px;
             }
         }
-        button.btn:hover {
-            border:1.5px solid #2d3956;
-        }
-    
-        .signOutButton {
-            margin-left: 10px;
+        .signOut,
+        a {
+            @media(max-width: 580px) {
+                width: 100%;
+                margin-left: 0;
+            }
         }
     }
 }
 
 .text__header {
     display: inline-block;
-    margin-top: 10px;
     margin-right: 5px;
 }
 
@@ -212,4 +234,3 @@ footer {
         font-size: 0.7rem;
     }
 }
-

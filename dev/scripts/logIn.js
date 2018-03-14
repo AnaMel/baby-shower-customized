@@ -25,7 +25,7 @@ class LogIn extends React.Component {
                 </fieldset>
 
                 <fieldset>
-                    <span>Sign in with: </span>
+                    <span>Sign in with </span>
                     <span>
                         <a href="#" onClick={this.props.googleSignIn}><i className="fab fa-google-plus-g graphics--form"></i></a>
                     </span>

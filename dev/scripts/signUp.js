@@ -24,7 +24,7 @@ class SignUp extends React.Component {
             createPassword: ''
         });
         this.props.closeModal();
-        this.props.redirectUserToDashBoard();
+        // this.props.redirectUserToDashBoard();
     }
 
     handleChange(event, field) {
@@ -39,7 +39,7 @@ class SignUp extends React.Component {
                 <form onSubmit={(event) => this.createUser(event)} className="form__auth layout__XYCenter">
                     <div className="layout__opposite">
                         <div><h3 className="heading__form">Sign Up</h3></div>
-                        <div><a href="#" onClick={this.props.closeModal}><i className="fas fa-times"></i></a></div>
+                        <div><a href="#" onClick={this.props.closeModal} className="link__black"><i className="fas fa-times"></i></a></div>
                     </div>
 
                     <fieldset>
@@ -53,7 +53,7 @@ class SignUp extends React.Component {
                     </fieldset>
 
                     <fieldset>
-                        <span>Create an account with: </span>
+                        <span>Create an account with </span>
                         <span>
                             <a href="#" onClick={this.props.googleSignIn}><i className="fab fa-google-plus-g graphics--form"></i></a>
                         </span>

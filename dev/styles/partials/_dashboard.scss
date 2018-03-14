@@ -1,14 +1,35 @@
 .eventDashboard {
     margin-top: 50px;
+    h2 {
+        font-size: 9rem;
+        color: white;
+        font-family: 'Cookie', cursive;
+        text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+        @media (max-width: 480px) {
+            text-align: center;
+        }
+    }
 }
 
 .dashboardControls {
-    margin: 50px 0;
+    margin: 35px 0;
+    @media (max-width: 480px) {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
     button {
         margin: 0 25px 25px 0;
         min-width: 250px;
         padding: 15px 20px;
         border:1.5px solid transparent;
+        background-color: #ED6A5A;
+        @media (max-width: 768px) {
+            min-width: 210px;
+        }
+        @media (max-width: 480px) {
+            width: 100%;
+        }
     }
     button:hover {
         border:1.5px solid #2d3956;
@@ -33,6 +54,10 @@
 
 .eventList {
     margin-bottom: 50px;
+    width: 80%;
+    @media (max-width: 1050px) {
+        width: 100%;
+    }
     .event {
         min-height: 200px;
         background-color: $color-ltgray;
@@ -40,25 +65,51 @@
         padding: 20px;
         box-shadow: 0 1px 8px 0 rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12);
         position: relative;
+        background-image: linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.7)),url('/assets/swirl_pattern.png');
         h2 {
             font-weight: bold;
-            font-size: 2rem;
+            font-size: 5rem;
             margin-bottom: 10px;
             display: inline-block;
             color: $color-main;
         }
         .hostBadge {
-            padding: 7px 20px;
-            margin-bottom: 15px;
-            background-color: $color-ac;
-            border-radius: 5px;
-            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 1px -1px rgba(0, 0, 0, 0.12);
-            width: 100px;
-            display: block;
-            text-align: center;
+            position: relative;
+            width: 20%;
+            font-size: 1.5em;
             font-weight: bold;
+            padding: 6px 20px 6px 70px;
+            margin: -10px 0 10px -40px;
+            color: white;
+            /* background-color: #999; */
+            text-shadow: 0px 1px 2px #bbb;
+            -webkit-box-shadow: 0px 2px 4px #888;
+            -moz-box-shadow: 0px 2px 4px #888;
+            box-shadow: 0px 2px 4px #888;
+            background-color: salmon;
+            @media (max-width: 1200px) {
+                width: 40%;
+            }
+            @media (max-width: 768px) {
+                width: 55%;
+            }
+            @media (max-width: 480px) {
+                width: 80%;
+            }
         }
-        .eventDateLocation {
+        .hostBadge:before{
+            content: ' ';
+            position: absolute;
+            width: 0;
+            height: 0;
+            left: 0px;
+            top: 100%;
+            border-width: 5px 10px;
+            border-style: solid;
+            border-color: #666 #666 transparent transparent;
+        }
+        .eventDate,
+        .eventLocation {
             margin: 20px 0;
         }
         .eventAction {
@@ -68,6 +119,9 @@
             right: 50px;
             @media (max-width: 768px) {
                 position: static;
+            }
+            button {
+                min-width: 230px;
             }
         }
         .editEvent {
@@ -88,7 +142,8 @@
             color: $color-main;
         }
         a {
-            color: green;
+            // display: inline;
+            color: purple;
             margin-right: 10px;
         }
     }
@@ -153,10 +208,44 @@
     }
 }
 
-.searchResult {
-    background-color: $color-ltgray;
-    margin-bottom: 25px;
-    padding: 20px;
-    box-shadow: 0 1px 8px 0 rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12);
-    position: relative;
+// .searchResult {
+//     background-color: $color-ltgray;
+//     margin-bottom: 25px;
+//     padding: 20px;
+//     box-shadow: 0 1px 8px 0 rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12);
+//     position: relative;
+//     p {
+//         font-size: 1.6rem;
+//     }
+// }
+
+.fox {
+    position: fixed;
+    bottom: -20px;
+    right: 0;
+    max-width: 250px;
+    @media (max-width: 1050px) {
+        display: none;
+    }
+}
+.raccoon {
+    display: none;
+    @media (max-width: 1050px) {
+        display: block;
+        position: fixed;
+        top: -80px;
+        left: 0;
+        max-width: 250px;
+        z-index: -1;
+        transform: rotate(150deg);
+    }
+    @media (max-width: 480px) {
+        display: none;
+    }
+}
+
+.copyLink {
+        display: inline-block;
+        margin-right: 5px;
+        line-height: 1.5;
 }

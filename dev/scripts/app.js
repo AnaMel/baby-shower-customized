@@ -15,16 +15,24 @@ import Header from "./Header";
 import Homepage from "./HomePage";
 import Footer from "./Footer";
 
- const config = {
-  apiKey: "AIzaSyAqWbiYS8Zx2pFxm9T9Fj_NMC-9YQRRSfg",
-  authDomain: "baby-registry-b41ed.firebaseapp.com",
-  databaseURL: "https://baby-registry-b41ed.firebaseio.com",
-  projectId: "baby-registry-b41ed",
-  storageBucket: "baby-registry-b41ed.appspot.com",
-  messagingSenderId: "69422388260"
+var config = {
+  apiKey: "AIzaSyAM9y_Sds3i1NylgyF688cpeJavLulYuG0",
+  authDomain: "baby-registry-custom.firebaseapp.com",
+  databaseURL: "https://baby-registry-custom.firebaseio.com",
+  projectId: "baby-registry-custom",
+  storageBucket: "",
+  messagingSenderId: "159268780955"
 };
 
 firebase.initializeApp(config);
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    let user = firebase.auth().currentUser;
+  } else {
+    // No user is signed in.
+  }
+});
 
 class App extends React.Component {
     constructor() {
@@ -37,7 +45,8 @@ class App extends React.Component {
         showLogin: false,
         showSignUp: false,
         userHostEvents: [],
-        userEvents: []
+        userEvents: [],
+        directLink: true
       }
       this.logInUser = this.logInUser.bind(this);
       this.handleChange = this.handleChange.bind(this);
@@ -46,6 +55,7 @@ class App extends React.Component {
       this.showSignUp = this.showSignUp.bind(this);
       this.closeModal = this.closeModal.bind(this);
       this.googleSignIn = this.googleSignIn.bind(this);
+      this.joinUsingDirectLink = this.joinUsingDirectLink.bind(this);
     }
 
     logInUser(event) {
@@ -111,6 +121,10 @@ class App extends React.Component {
       this.setState({ showLogin: false, showSignUp: false, });
     }
 
+    joinUsingDirectLink() {
+      this.setState({directLink: false});
+    }
+
     render() {
       return (
         <Router>
@@ -131,16 +145,21 @@ class App extends React.Component {
             <Header user={this.state.user} signOutUser={this.signOutUser} showLogin={this.showLogin} showSignUp={this.showSignUp} closeModal={this.closeModal} googleSignIn={this.googleSignIn} />
 
             <Route path="/dashboard/:eventid" exact component={RegistryPage} />
+            <Route path="/invite/:eventid" exact component={InviteLandingPage} />
+
 
             <Route
               path="/invite/:eventid" exact
               render={(props) => (
+              this.state.directLink?
               <InviteLandingPage {...this.state.user} 
               {...props}
               showLogin= { this.showLogin }
               showSignUp = { this.showSignUp }
               closeModal = { this.closeModal }
-              /> )} 
+              /> 
+              :null
+              )} 
             />
             
             {/* Changes: passing down userHostEvents and userEvents */}
@@ -158,18 +177,11 @@ class App extends React.Component {
             <Route path="/" exact render={(props) => (
       
               this.state.loggedIn===true?
-                // <Dashboard 
-                //     user={this.state.user}
-                //     loggedIn={this.state.loggedIn}
-                //     userHostEvents={this.state.userHostEvents}
-                //     userEvents={this.state.userEvents}
-                //   />
                 <Redirect to={{pathname:`/dashboard`, user:this.state.user,
                 loggedIn:this.state.loggedIn,
                 userHostEvents:this.state.userHostEvents,
                 userEvents:this.state.userEvents}}/>
-                // <Redirect to={{pathname: `/dashboard/${this.state.eventKey}`, eventId: this.state.eventKey, userId: this.props.user.uid, isHost: true}}/>
-              :  <Homepage loggedIn={this.state.loggedIn} />
+              :<Homepage loggedIn={this.state.loggedIn} showLogin={this.showLogin} showSignUp={this.showSignUp} joinUsingDirectLink={this.joinUsingDirectLink} user={this.state.user} />
             )} 
             />
             
@@ -221,9 +233,6 @@ class App extends React.Component {
           });
         }
       })
-
-
-
     }
   }
 

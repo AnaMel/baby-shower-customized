@@ -5,10 +5,14 @@
     font-size: ($fontSize / 16) * 1rem;
 }
 
+html {
+    font-size: 10px;
+}
+
 body {
     margin: 0;
     padding: 0;
-    // font-size: 1.6rem;
+    font-size: 1.6rem;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -32,34 +36,44 @@ img {
 
 .heading {
     &__form {
-        @include remCalc(24);
+        font-size: 3rem;
         margin-bottom: 10px;
         font-weight: 700;
     }
 
     &__page {
-        @include remCalc(28);
+        font-size: 9rem;
+        color: white;
         margin-bottom: 15px;
+        font-family: 'Cookie', cursive;
+        text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
     }
 
     &__hero {
-        font-size: 4rem;
+        font-family: 'Cookie', cursive;
+        font-size: 8rem;
         text-align: center;
         color: white;
         color: $color-main;
         padding: 30px 40px;
         width: 80%;
         text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-        @media(max-width: 960px) {
-            font-size: 2.5rem;
+        @media(max-width: 940px) {
+            font-size: 3.5rem;
+            width: 100%;
         }
         @media(max-width: 480px) {
-            font-size: 2rem;
+            // font-size: 3.5rem;
+            padding: 0;
+            margin-bottom: 25px;
         }
     }
 
     &__section {
-        @include remCalc(20);
+        font-family: 'Cookie', cursive;
+        font-size: 5rem;
+        color:  $color-main;
+        text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
         margin-bottom: 20px;
     }
 

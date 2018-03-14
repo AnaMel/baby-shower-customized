@@ -46,7 +46,7 @@ class Dashboard extends  React.Component {
     renderSearchModal() {
         if(this.state.showSearchModal === true) {
             return(
-                <SearchForRegistryModal user={this.props.user} userHostEvents = {this.state.userHostEvents} handleSearchClick={this.handleSearchClick} />
+                <SearchForRegistryModal user={this.props.user} userHostEvents = {this.state.userHostEvents} handleSearchClick={this.handleSearchClick} loggedIn={this.props.loggedIn} />
             )
         }
     }
@@ -54,13 +54,14 @@ class Dashboard extends  React.Component {
     render() {
         return(
             <main>
+                <img className="raccoon" src="../../assets/raccoon.png"/>
                 {this.renderModal()}
                 {this.renderSearchModal()}
                 <div className="wrapper eventDashboard">
                     <h2 className="heading__page">Events Dashboard</h2>
                     <div className="dashboardControls">
-                        <button onClick={(event) => this.handleClick(event)}>Host a New Event</button>
-                        <button onClick={(event) => this.handleSearchClick(event)} >Join an Event</button>
+                        <button onClick={(event) => this.handleClick(event)}>Create Your Registry</button>
+                        <button onClick={(event) => this.handleSearchClick(event)} >Find a Registry</button>
                     </div>
                     <section className="eventList">
                     {/** iterate through array of user's events and for each event render a div container */}
@@ -79,6 +80,7 @@ class Dashboard extends  React.Component {
                         }
                     </section>
                 </div>
+                <img className="fox" src="../../assets/fox.png"/>
             </main>
         )
     }

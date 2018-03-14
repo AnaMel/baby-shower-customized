@@ -18,16 +18,17 @@ class Header extends React.Component {
             <React.Fragment>
                 <header className='layout__opposite'>
                     <div className="headerContent clearfix">
-                        <div className="logo">
+                        {/* <div className="logo">
                             <p>betsy</p>
-                        </div>
+                        </div> */}
 
                         {/* Display different items on the right of header if logged in) */}
                         {this.props.user  ?
                             <div className="headerControls">
                             {/* user is logged in, show user's email, link to dashboard, sign out button */}
-                                <span className="text__header">{this.props.user.email}</span>
-                                <Link to="/dashboard">Dashboard</Link>
+                                <Link to="/dashboard">
+                                    <button>Go to Dashboard</button>
+                                </Link>
                                 <SignOut signOutUser={this.props.signOutUser} />
                             </div>
                         : 

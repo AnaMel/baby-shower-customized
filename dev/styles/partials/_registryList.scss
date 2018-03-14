@@ -4,7 +4,7 @@
 .searchBar {
     margin-top:20px;
     padding: 10px;
-    border: 1px solid $color-ltgray;
+    // border: 1px solid $color-ltgray;
     label {
         margin-right: 20px;
     }
@@ -15,8 +15,9 @@ form.categories {
 }
 
 #search {
-    width: 70%;
+    width: 80%;
     margin-right: 10px;
+    height: 42px;
 }
 
 .filter {
@@ -48,16 +49,19 @@ button.btn__filter {
 }
 
 .categories {
-    padding: 20px 10px;
+    padding: 10px;
     width: 100%;
-    margin:0 auto;
-    min-height: 100px;
-    background: $color-main;
-    color: white;
+    display: flex;
+    justify-content: space-around;
+    color: #2d3956;
+    // margin:0 auto;
+    // min-height: 100px;
+    // background: $color-main;
+    // color: white;
 
     div {
-        width:calc((100% - 50px) / 4 );
-        float:left;
+        // width:calc((100% - 50px) / 4 );
+        // float:left;
         margin-top:0;
         min-height: 40px;
     }
@@ -76,8 +80,11 @@ button.btn__filter {
 
 .searchGrid {
     // width: 66.66%;
-    float:left;
-    border: 1px solid $color-ltgray;
+    // float:left;
+    // border: 1px solid $color-ltgray;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     padding: 20px 10px;
 
     h2 {
@@ -101,20 +108,19 @@ button.btn__filter {
         float: none;
     }
     width: 100%;
-    background: $color-ltgray;
+    background: rgba(255,255,255,0.5);
     padding: 20px 10px;
     min-height:350px;
+    display: flex;
+    justify-content: flex-start;
     
     h2 {
-        margin-bottom:20px;
+        margin: 0 15px 20px 0;
     }
     button {
-        border:1.5px solid transparent;
+        // border:1.5px solid transparent;
         margin-bottom:10px;
         display:block;
-    }
-    button:hover {
-        border:1.5px solid #2d3956;
     }
     h3 {
         margin-top:20px;

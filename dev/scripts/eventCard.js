@@ -88,11 +88,12 @@ class EventCard extends React.Component {
                     <div className="eventDetails">
                         <p className="hostBadge">Host</p>
                         {this.showForm(this.props.eventName)}
-                        <a href="#" className={this.state.isEditing ? 'hide': 'editEvent'} onClick={(e) => this.allowEdit(e)}>
+                        <a href="#" className={this.state.isEditing?'hide': 'editEvent'} onClick={(e) => this.allowEdit(e)}>
                             <i className="fas fa-pencil-alt"></i>
                         </a>
-                        <p className="eventDateLocation"><span className="em">Event:</span> {`${this.props.datetime}, ${this.props.location}`}</p>
-                        <p value={this.state.value}><span className="em">Invite Link</span>: {`https://baby-registry-b41ed.firebaseapp.com/invite/${this.props.eventId}`}</p>
+                        <p className="eventLocation"><span className="em">Location:</span> {`${this.props.location}`}</p>
+                        <p className="eventDate"><span className="em">Date:</span> {`${this.props.datetime}`}</p>
+                        <p className="copyLink" value={this.state.value}><span className="em">Invite Link</span>: {`https://baby-registry-b41ed.firebaseapp.com/invite/${this.props.eventId}`}</p>
                         <CopyToClipboard text={this.state.value} onCopy={() => this.setState({copied: true})}>
                             {/* <button style={this.state.copied?{backgroundColor: 'green'}: null}>Copy Invite Link</button>
                          */}
@@ -103,7 +104,7 @@ class EventCard extends React.Component {
 
                     </div>
                     <Link className="eventAction" to={{pathname: `/dashboard/${this.props.eventId}`, eventId: this.props.eventId, userId: this.props.user.uid, isHost: true}}>
-                        <button>Edit My Registry</button>
+                        <button>Go to My Registry Page</button>
                     </Link>
                 </div>
             : 
@@ -112,10 +113,10 @@ class EventCard extends React.Component {
                     <div className="eventDetails">
                         <h2>{this.props.eventName}</h2>
                         <p>{`Host: ${this.props.hostName}`}</p>
-                        <p className="eventDateLocation"><span className="em">Event: </span>{`${this.props.datetime}, ${this.props.location}`}</p>
-                    </div>
+                        <p className="eventLocation"><span className="em">Location:</span> {`${this.props.location}`}</p>                    </div>
+                        <p className="eventDate"><span className="em">Date:</span> {`${this.props.datetime}`}</p>
                     <Link className="eventAction" to={{pathname: `/dashboard/${this.props.eventId}`, eventId: this.props.eventId, userId: this.props.user.uid, isHost: false, hostId:this.props.hostId}}>
-                        <button>See Registry</button>
+                        <button>See Registry Page</button>
                     </Link>
                 </div>
             :   

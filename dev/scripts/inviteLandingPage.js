@@ -1,11 +1,13 @@
 import React from 'react';
-import {
+import { 
     Link
 } from 'react-router-dom';
 
 // user arrives at this page from baby.com/dashboard/eventid
 // user sees this page if they do not already have this event in their account (otherwise redirect to dashboard)
 // <InviteLandingPage user={this.state.user} showLogin={this.showLogin} showSignUp={this.showSignUp} closeModal={this.closeModal}/>
+
+
 
 class InviteLandingPage extends React.Component {
     
@@ -15,6 +17,7 @@ class InviteLandingPage extends React.Component {
         this.state = {
             invitedEvent : {},
             showLinkToDash : false,
+            user: {}
         }
 
         this.joinEvent = this.joinEvent.bind(this);
@@ -46,12 +49,31 @@ class InviteLandingPage extends React.Component {
         const eventId = this.props.match.params.eventid;
         const dbref = firebase.database().ref(`/events/${eventId}`);
         this.unsubscribe = dbref.on('value', (snapshot) => {
+            console.log(snapshot);
             const invitedEvent = snapshot.val();
  
             this.setState({
                 invitedEvent : invitedEvent,
             });
         });
+
+        this.authUnsubscribe = firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.setState({ 
+                    user: user
+                })
+            } else {
+                // No user is signed in.
+                this.setState({
+                    user: {}
+                });
+            }
+        });
+    }
+
+    componentWillUnmount() {
+        // this.unsubscribe();
+        // this.authUnsubscribe();   
     }
 
     render() {
@@ -64,7 +86,7 @@ class InviteLandingPage extends React.Component {
                             <h3>{this.state.invitedEvent.hostName}!</h3>
                             <img src="/assets/ryan-tiger-photo.png" alt="Baby in tiger costume"/>
     
-                            {this.props.uid ?
+                            {this.state.user.uid?
                                 //if user is already logged in, show button which direectly adds this event to their firebase
                                 <React.Fragment>
                                 <div className="wrap__button">
@@ -84,7 +106,7 @@ class InviteLandingPage extends React.Component {
                                 <React.Fragment>
                                     <p>Please log into your account to see the baby registry list.</p>
                                     <div className="layout__beside">
-                                        <button className="btn" onClick={this.props.showLogin}>Log In</button>
+                                        <button className="btn" onClick={this.props.showLogin?this.props.showLogin:this.props.location.showLogin}>Log In</button>
                                         <button className="btn" onClick={this.props.showSignUp}>Sign Up</button>
                                     </div>
                                 </React.Fragment>
@@ -97,6 +119,7 @@ class InviteLandingPage extends React.Component {
             </main>
         )
     }
+    
 }
 
 export default InviteLandingPage;
